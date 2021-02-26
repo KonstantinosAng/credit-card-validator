@@ -5,27 +5,27 @@ class validator():
     self.Brand = None
   
   def __findBrand(self):
-    if str(self.cardNumber)[:2] in ['34','37']:
+    if self.cardNumber[:2] in ['34','37']:
       self.Brand = 'American Express'
-    elif str(self.cardNumber)[:3] in ['300', '301', '302', '303', '304', '305']:
+    elif self.cardNumber[:3] in ['300', '301', '302', '303', '304', '305']:
       self.Brand = 'Diners Club - Carte Blanche'
-    elif str(self.cardNumber)[:2] in ['36']:
+    elif self.cardNumber[:2] in ['36']:
       self.Brand = 'Diner Club - International'
-    elif str(self.cardNumber)[:2] in ['54']:
+    elif self.cardNumber[:2] in ['54']:
       self.Brand = 'Diners Club - USA & Canada'
-    elif str(self.cardNumber)[:4] in ['6011'] or str(self.cardNumber)[0:3] in ['644', '645', '646', '647', '648', '649', '65'] or str(self.cardNumber)[0:6] in [str(x) for x in range(622126, 622926)]:
+    elif self.cardNumber[:4] in ['6011'] or self.cardNumber[0:3] in ['644', '645', '646', '647', '648', '649', '65'] or self.cardNumber[0:6] in [str(x) for x in range(622126, 622926)]:
       self.Brand = 'Discover'
-    elif str(self.cardNumber)[:3] in ['637', '638', '639']:
+    elif self.cardNumber[:3] in ['637', '638', '639']:
       self.Brand = 'InstaPayment'
-    elif str(self.cardNumber)[:4] in [str(x) for x in range(3528, 3590)]:
+    elif self.cardNumber[:4] in [str(x) for x in range(3528, 3590)]:
       self.Brand = 'JCB'
-    elif str(self.cardNumber)[:4] in ['5018', '5020', '5038', '5893', '6304', '6759', '6761', '6762', '6763']:
+    elif self.cardNumber[:4] in ['5018', '5020', '5038', '5893', '6304', '6759', '6761', '6762', '6763']:
       self.Brand = 'Maestro'
-    elif str(self.cardNumber)[:2] in ['51', '52', '53', '54', '55'] or str(self.cardNumber)[:6] in [str(x) for x in range(222100,272100)]:
+    elif self.cardNumber[:2] in ['51', '52', '53', '54', '55'] or self.cardNumber[:6] in [str(x) for x in range(222100,272100)]:
       self.Brand = 'MasterCard'
-    elif str(self.cardNumber)[:4] in ['4026', '4508', '4844', '4913', '4917'] or str(self.cardNumber)[:6] == '417500':
+    elif self.cardNumber[:4] in ['4026', '4508', '4844', '4913', '4917'] or self.cardNumber[:6] == '417500':
       self.Brand = 'VISA Electron'
-    elif str(self.cardNumber)[0] in ['4']:
+    elif self.cardNumber[0] in ['4']:
       self.Brand = 'VISA'
     else:
       self.Brand = 'Uknown Brand'
@@ -37,7 +37,7 @@ class validator():
     number = ''.join(x for x in str(number).strip().split())
     if number.isdigit() and 13 <= len(number) <= 19:
       # Identify Brand
-      self.cardNumber = int(number)
+      self.cardNumber = number
       self.__findBrand()
       # Luhn's Algorithm
       lastDigit = int(number[-1])
