@@ -10,10 +10,10 @@ class validator():
     elif self.cardNumber[:3] in ['300', '301', '302', '303', '304', '305']:
       self.Brand = 'Diners Club - Carte Blanche'
     elif self.cardNumber[:2] in ['36']:
-      self.Brand = 'Diner Club - International'
+      self.Brand = 'Diners Club - International'
     elif self.cardNumber[:2] in ['54']:
       self.Brand = 'Diners Club - USA & Canada'
-    elif self.cardNumber[:4] in ['6011'] or self.cardNumber[0:3] in ['644', '645', '646', '647', '648', '649', '65'] or self.cardNumber[0:6] in [str(x) for x in range(622126, 622926)]:
+    elif self.cardNumber[:4] in ['6011'] or self.cardNumber[0:3] in ['644', '645', '646', '647', '648', '649'] or self.cardNumber[0:2] in ['65'] or self.cardNumber[0:6] in [str(x) for x in range(622126, 622926)]:
       self.Brand = 'Discover'
     elif self.cardNumber[:3] in ['637', '638', '639']:
       self.Brand = 'InstaPayment'
@@ -28,9 +28,12 @@ class validator():
     elif self.cardNumber[0] in ['4']:
       self.Brand = 'VISA'
     else:
-      self.Brand = 'Uknown Brand'
+      self.Brand = 'Unknown Brand'
 
   def validate(self, number):
+    """
+    number: str or int credit card number
+    """
     if number is None: return 'Not a valid Credit Card Number'
     if number is bool: return 'Not a valid Credit Card Number'
     if number is float: return 'Not a valid Credit Card Number'
